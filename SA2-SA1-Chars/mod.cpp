@@ -17,8 +17,6 @@ extern "C" {
 			MessageBoxA(MainWindowHandle, error, "SA1 Chars", MB_ICONWARNING);
 		}
 
-		//Disable_Jiggle();
-
 		ReadConfig(path); //get mod settings by the user
 	}
 

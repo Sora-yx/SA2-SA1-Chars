@@ -50,5 +50,11 @@
     <ClCompile Include="sonic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="miles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="amy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

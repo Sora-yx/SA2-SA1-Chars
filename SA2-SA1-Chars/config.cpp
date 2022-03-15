@@ -13,8 +13,20 @@ bool amyUpgrade = true;
 void ReadConfig(const char* path) {
 
 	const IniFile* config = new IniFile(std::string(path) + "\\config.ini");
-
+	sonic = config->getBool("Sonic", "sonic", true);
+	miles = config->getBool("Miles", "miles", true);
+	knux = config->getBool("Knux", "knux", true);
+	amy = config->getBool("Amy", "amy", true);
 
 	delete config;
+
+	if (sonic)
+		Sonic_Init();
+
+	if (miles)
+		Miles_Init();
+
+	if (amy)
+		Amy_Init();
 
 }
