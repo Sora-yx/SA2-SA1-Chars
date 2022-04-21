@@ -14,5 +14,7 @@
 #include "IniFile.hpp"
 #include "mod.h"
 #include "util.h"
+#include "sa2-util.h"
+#include "data_dll.h"
 
 #endif //PCH_H

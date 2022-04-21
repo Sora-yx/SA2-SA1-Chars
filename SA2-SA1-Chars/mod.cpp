@@ -8,7 +8,7 @@ extern "C" {
 
 	__declspec(dllexport) void __cdecl Init(const char* path, const HelperFunctions& helperFunctions)
 	{
-		Sleep(10);
+		Sleep(12);
 
 		HelperFunctionsGlobal = helperFunctions;
 
@@ -17,7 +17,19 @@ extern "C" {
 			MessageBoxA(MainWindowHandle, error, "SA1 Chars", MB_ICONWARNING);
 		}
 
+		HMODULE SA2Anim = GetModuleHandle(L"SA2-Anim-Break");
+
+		if (!SA2Anim)
+		{
+			MessageBox(MainWindowHandle,
+				L"Failed to load SA2-Anim-Break.dll, the mod won't work!", L"SA1 Characters: DLL not found!", MB_OK | MB_ICONERROR);
+		}
+
+		Disable_Jiggle();
+		PatchAnimations();
 		ReadConfig(path); //get mod settings by the user
+
+
 	}
 
 	__declspec(dllexport) void __cdecl OnFrame() {

@@ -159,13 +159,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="data_dll.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="mod.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="sa2-util.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="amy.cpp" />
+    <ClCompile Include="animations.cpp" />
     <ClCompile Include="config.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="jiggle.cpp" />

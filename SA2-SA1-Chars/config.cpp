@@ -20,6 +20,7 @@ void ReadConfig(const char* path) {
 
 	delete config;
 
+
 	if (sonic)
 		Sonic_Init();
 
