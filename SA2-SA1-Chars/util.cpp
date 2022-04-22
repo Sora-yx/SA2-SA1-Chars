@@ -13,8 +13,6 @@ typedef void(__cdecl* func)(uint16_t Index, uint16_t Count, NJS_MOTION* Animatio
 
 void SetCharacterAnim(uint16_t Index, uint16_t Count, NJS_MOTION* Animation)
 {
-	HMODULE SA2Anim = GetModuleHandle(L"SA2-Anim-Break");
-
 	if (!SA2Anim) 
 		return;
 
@@ -33,8 +31,6 @@ typedef AnimationIndex* (CALLBACK* anim) (void);
 
 AnimationIndex* getCharAnim_r()
 {
-	HMODULE SA2Anim = GetModuleHandle(L"SA2-Anim-Break");
-
 	if (!SA2Anim)
 		return nullptr;
 

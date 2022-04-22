@@ -24,10 +24,10 @@ void ReadConfig(const char* path) {
 	if (sonic)
 		Sonic_Init();
 
-	if (miles)
+	/*1if (miles)
 		Miles_Init();
 
 	if (amy)
-		Amy_Init();
+		Amy_Init();*/
 
 }

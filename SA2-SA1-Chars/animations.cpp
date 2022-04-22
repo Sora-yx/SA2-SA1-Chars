@@ -55,7 +55,7 @@ AnimationInfo SonicAnimationList_r[] = {
 	{ 51, 0, 4, 15, 0.5f, 0.3f },
 	{ 52, 0, 4, 15, 0.5f, 0.3f },
 	{ 53, 0, 7, 0, 1, 0.2f },
-	{ 54, 0, 6, 54, 1, 0.5f },
+	{ 54, 0, 6, 54, 0.5f, 1.0f },
 	{ 55, 0, 3, 55, 0.125f, 0.3f },
 	{ 56, 0, 4, 15, 1, 0.25f },
 	{ 57, 0, 4, 58, 0.125f, 0.1f },
@@ -101,10 +101,10 @@ AnimationInfo SonicAnimationList_r[] = {
 	{ 97, 0, 4, 98, 0.25f, 1 },
 	{ 98, 0, 4, 99, 0.25f, 0.2f },
 	{ 99, 0, 4, 16, 0.25f, 1 },
-	{ 65, 0, 3, 100, 1, 3 },
-	{ 65, 0, 6, 67, 0.25f, 0.3f },
-	{ 65, 0, 6, 67, 0.25f, 0.3f },
-	{ 65, 0, 6, 67, 0.25f, 0.3f },
+	{ 66, 0, 3, 100, 1, 3 },
+	{ 66, 0, 6, 67, 0.25f, 0.3f },
+	{ 66, 0, 6, 67, 0.25f, 0.3f },
+	{ 66, 0, 6, 67, 0.25f, 0.3f },
 	{ 104, 0, 13, 104, 0.25f, 0.3f },
 	{ 105, 0, 13, 105, 0.25f, 0.3f },
 	{ 106, 0, 13, 106, 0.25f, 0.3f },
@@ -206,39 +206,6 @@ AnimationInfo SonicAnimationList_r[] = {
 	{ 202, 0, 3, 202, 0.125f, 0.5f }
 };
 
-//TO DO: add multiplayer compatibility
-void ResetCharAnim(char playerNum)
-{
-	for (int i = 0; i < 300; i++)
-	{
-		CharacterAnimations[i].Animation = nullptr;
-		CharacterAnimations[i].Count = 0;
-		CharacterAnimations[i].Index = 0;
-		SetCharacterAnim(i, 0, nullptr);
-	}
-}
-
-AnimationIndex BackupAnim[86]{};
-
-void BackupCharAnim()
-{
-	for (int i = 0; i < 86; i++)
-	{
-		BackupAnim[i].Animation = CharacterAnimations[i].Animation;
-		BackupAnim[i].Count = CharacterAnimations[i].Count;
-		BackupAnim[i].Index = i;
-	}
-}
-
-void RestoreCharAnim()
-{
-	for (int i = 0; i < 86; i++)
-	{
-		CharacterAnimations[i].Animation = BackupAnim[i].Animation;
-		CharacterAnimations[i].Count = BackupAnim[i].Count;
-		CharacterAnimations[i].Index = i;
-	}
-}
 
 //Since SA1 skeleton isn't compatible with SA2 Anim, we replace those with the falling anim
 void AddAnimFailSafe()
@@ -256,20 +223,11 @@ void AddAnimFailSafe()
 
 void LoadSonicMTN_r()
 {
-	BackupCharAnim();
-	ResetCharAnim(0);
-
-	auto mem = LoadMTNFile((char*)"sa1sonicmtn.prs");
-
-	for (int i = 0; i < LengthOfArray(SonicAnimationList_r); i++)
-	{
-		SetCharacterAnim(i, CharacterAnimations[i].Count, CharacterAnimations[i].Animation);
-	}
+	PrintDebug("Load Sonic Anim\n");
 
 	AddAnimFailSafe();
-
 	LoadSonEffTex();
-	RestoreCharAnim();
+
 	return;
 }
 
@@ -279,5 +237,6 @@ void PatchAnimations()
 	{
 		WriteData((AnimationInfo**)0x716F0A, SonicAnimationList_r);
 		WriteCall((void*)0x717081, LoadSonicMTN_r);
+		WriteData((NJS_MOTION**)0x43EE1D, (NJS_MOTION*)0x1740C8C); //swap victory cam with knux to fit sa1 more
 	}
 }

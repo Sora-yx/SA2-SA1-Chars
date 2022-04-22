@@ -1,5 +1,6 @@
 #pragma once
 
+extern HMODULE SA2Anim;
 extern bool sonic;
 extern bool miles;
 extern bool knux;

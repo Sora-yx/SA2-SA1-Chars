@@ -3,6 +3,7 @@
 HelperFunctions HelperFunctionsGlobal;
 const char* error = "[SA1 Chars]: WARNING: Your version of the Mod Loader is old, the mod won't work properly.\nPlease update your Mod Loader for the best experience.";
 
+HMODULE SA2Anim = NULL;
 
 extern "C" {
 
@@ -17,7 +18,7 @@ extern "C" {
 			MessageBoxA(MainWindowHandle, error, "SA1 Chars", MB_ICONWARNING);
 		}
 
-		HMODULE SA2Anim = GetModuleHandle(L"SA2-Anim-Break");
+		SA2Anim = GetModuleHandle(L"SA2-Anim-Break");
 
 		if (!SA2Anim)
 		{
