@@ -7,6 +7,7 @@ HMODULE SA2Anim = NULL;
 
 extern "C" {
 
+
 	__declspec(dllexport) void __cdecl Init(const char* path, const HelperFunctions& helperFunctions)
 	{
 		Sleep(12);
@@ -26,9 +27,11 @@ extern "C" {
 				L"Failed to load SA2-Anim-Break.dll, the mod won't work!", L"SA1 Characters: DLL not found!", MB_OK | MB_ICONERROR);
 		}
 
+		ReadConfig(path); //get mod settings by the user
 		Disable_Jiggle();
 		PatchAnimations();
-		ReadConfig(path); //get mod settings by the user
+		init_OnionBlur();
+
 
 
 	}

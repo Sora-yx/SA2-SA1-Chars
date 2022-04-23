@@ -15,8 +15,9 @@ void Disable_Jiggle();
 void Sonic_Init();
 void Miles_Init();
 void Amy_Init();
-void PatchAnimations();
 void DLL_SA2ModDataInit();
+void PatchAnimations();
+void init_OnionBlur();
 
 extern HelperFunctions HelperFunctionsGlobal;
 

@@ -19,7 +19,7 @@ AnimationInfo SonicAnimationList_r[] = {
 	{ 15, 0, 3, 15, 0.125f, 0.4f },
 	{ 16, 0, 4, 0, 1, 0.8f },
 	{ 17, 0, 4, 0, 1, 0.8f },
-	{ 18, 0, 9, 0, 0.25f, 0.3f },
+	{ 18, 0, 9, 0, 0.25f, 1.0f },
 	{ 19, 0, 4, 20, 0.125f, 0.2f },
 	{ 20, 0, 3, 20, 0.25f, 0.6f },
 	{ 21, 0, 6, 21, 1, 0.1f },
@@ -60,7 +60,7 @@ AnimationInfo SonicAnimationList_r[] = {
 	{ 56, 0, 4, 15, 1, 0.25f },
 	{ 57, 0, 4, 58, 0.125f, 0.1f },
 	{ 58, 0, 3, 58, 1, 0.1f },
-	{ 59, 0, 6, 59, 1, 0.2f },
+	{ 59, 0, 6, 59, 0.25f, 1.0f },
 	{ 60, 0, 6, 60, 0.25f, 1 },
 	{ 61, 0, 3, 61, 0.25f, 0.5f },
 	{ 62, 0, 6, 62, 0.25f, 0.1f },
@@ -223,7 +223,7 @@ void AddAnimFailSafe()
 
 void LoadSonicMTN_r()
 {
-	PrintDebug("Load Sonic Anim\n");
+	PrintDebug("SA1 Char: Add failsafe Anim!\n");
 
 	AddAnimFailSafe();
 	LoadSonEffTex();
