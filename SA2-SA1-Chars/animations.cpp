@@ -1,5 +1,7 @@
 #include "pch.h"
 
+Trampoline* LoadCharacter_t = nullptr;
+
 AnimationInfo SonicAnimationList_r[] = {
 	{ 0, 0, 3, 0, 0.0625f, 0.50f },
 	{ 1, 0, 3, 1, 0.25f, 0.1f },
@@ -221,22 +223,26 @@ void AddAnimFailSafe()
 	}
 }
 
-void LoadSonicMTN_r()
+
+void LoadCharacters_r()
 {
+	auto original = reinterpret_cast<decltype(LoadCharacters_r)*>(LoadCharacter_t->Target());
+	original();
 	PrintDebug("SA1 Char: Add failsafe Anim!\n");
 
 	AddAnimFailSafe();
-	LoadSonEffTex();
-
 	return;
 }
+
 
 void PatchAnimations()
 {
 	if (sonic) 
 	{
 		WriteData((AnimationInfo**)0x716F0A, SonicAnimationList_r);
-		WriteCall((void*)0x717081, LoadSonicMTN_r);
 		WriteData((NJS_MOTION**)0x43EE1D, (NJS_MOTION*)0x1740C8C); //swap victory cam with knux to fit sa1 more
 	}
+
+	LoadCharacter_t = new Trampoline((int)LoadCharacters, (int)LoadCharacters + 0x6, LoadCharacters_r);
+
 }

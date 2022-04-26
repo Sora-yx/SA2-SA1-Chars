@@ -31,9 +31,6 @@ extern "C" {
 		Disable_Jiggle();
 		PatchAnimations();
 		init_OnionBlur();
-
-
-
 	}
 
 	__declspec(dllexport) void __cdecl OnFrame() {
