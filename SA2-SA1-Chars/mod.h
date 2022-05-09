@@ -26,5 +26,6 @@ extern HelperFunctions HelperFunctionsGlobal;
 const int MilesjmpBallID = 230;
 const int MilesCurlMDL = 255;
 const int MilesFlightMDL = 269;
+const int knuxCurlMDL = 236;
 
 

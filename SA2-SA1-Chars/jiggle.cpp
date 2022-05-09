@@ -18,6 +18,16 @@ void LoadMilesJiggleMDL()
 	MilesJiggleMDL[13] = LoadJiggleMDL("13", chara);
 }
 
+const void* const loc_728399 = (const void*)0x728399;
+__declspec(naked) void thingKnux() {
+	__asm {
+		mov esi, [esp + 0Ch]
+		sub esp, 4
+		jmp loc_728399
+	}
+}
+
+
 
 const void* const loc_717028 = (const void*)0x717028;
 __declspec(naked) void thingSonic() {
@@ -42,6 +52,7 @@ void Disable_Jiggle()
 {
 	WriteJump((void*)0x716FDD, thingSonic);
 	WriteJump((void*)0x717257, thingAmy);
+	WriteJump((void*)0x728346, thingKnux);
 
 	LoadMilesJiggleMDL();
 }
