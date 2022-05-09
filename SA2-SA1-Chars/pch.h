@@ -13,6 +13,7 @@
 #include "Trampoline.h"
 #include "IniFile.hpp"
 #include "mod.h"
+#include "ModelInfo.h"
 #include "util.h"
 #include "sa2-util.h"
 #include "data_dll.h"

@@ -1,0 +1,26 @@
+#pragma once
+
+enum MilesAnimation {
+	FlyingAnim = 90,
+	TailAttackAnim = 94,
+	SwapAnim = 216,
+	VictorySuperForm,
+	LightdashAnim,
+	PaddingAnim,
+	BeginDivingAnim,
+	DivingAnim,
+	BegingSurfacingAnim,
+	SurfacingAnim,
+	FloatingWaterAnim,
+	VictoryAnim,
+	Spin1,
+	Spin2,
+	Spin3,
+	Spin4,
+	Spin5,
+	Spin6,
+	Spin7,
+	Spin8,
+	Spin9,
+	Spin10,
+};

@@ -30,11 +30,9 @@ extern "C" {
 		ReadConfig(path); //get mod settings by the user
 		Disable_Jiggle();
 		PatchAnimations();
-		init_OnionBlur();
 	}
 
 	__declspec(dllexport) void __cdecl OnFrame() {
-
 
 
 	}

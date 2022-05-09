@@ -1,6 +1,8 @@
 #pragma once
 
 #define MATRIX_1A51A00 ((NJS_MATRIX_PTR)0x1A51A00) //matrix used for Sonic CallBack
+#define MATRIX_1A521BC ((NJS_MATRIX_PTR)0x1A521BC) //matrix used for Miles CallBack
+
 typedef Uint32 NJD_SPRITE;
 typedef Uint32 NJD_FLAG;
 typedef Uint32 NJD_CONTROL_3D;
@@ -28,22 +30,46 @@ static inline void sub_426420(int a1, int a2)
 }
 
 DataPointer(RenderInfo, Has_texlist_batadvPlayerChara_in_it, 0x2670544);
-DataPointer(int, nj_control_3d_flag_, 0x025F02D8);
 
-//void __usercall njColorBlendingMode(int a1@<eax>, int a2)
-static const void* const njColorBlendingMode_ptr = (void*)0x426420;
-static inline void njColorBlendingMode(NJD_COLOR_BLENDING mode, NJD_COLOR_TARGET target)
-{
-	__asm
-	{
-		push[target]
-		mov eax, mode
-		call njColorBlendingMode_ptr
-		add esp, 4
-	}
-}
 
 DataPointer(NJS_ARGB, GlobalSpriteColor, 0x25EFFD0);
 
-DataPointer(int, nj_constant_attr_or_, 0x025F02D4);
-DataPointer(int, nj_constant_attr_and_, 0x25F0268);
+
+
+static const void* const sub_42F770Ptr = (void*)0x42F770;
+static inline void sub_42F770(float* a1)
+{
+	__asm
+	{
+		mov eax, [a1]
+		call sub_42F770Ptr
+	}
+}
+
+static const void* const doJigglePtr = (void*)0x4479E0;
+static inline void DoJiggleThing(JiggleInfo* a1)
+{
+	__asm
+	{
+		mov eax, [a1]
+		call doJigglePtr
+	}
+}
+
+
+//int __usercall BAMS_SubWrap@<eax>(int result@<eax>, int ang0@<edx>, __int16 ang1@<cx>)
+
+static const void* const BAMS_SubWrapPtr = (void*)0x446960;
+static inline signed int BAMS_SubWrap(int a, int ang0, __int16 ang1)
+{
+	signed int result;
+	__asm
+	{
+		mov cx, [ang1]
+		mov edx, [ang0]
+		mov eax, [a]
+		call BAMS_SubWrapPtr
+		mov result, eax
+	}
+	return result;
+}

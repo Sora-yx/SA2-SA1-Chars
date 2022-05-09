@@ -17,8 +17,14 @@ void Miles_Init();
 void Amy_Init();
 void DLL_SA2ModDataInit();
 void PatchAnimations();
-void init_OnionBlur();
+
 
 extern HelperFunctions HelperFunctionsGlobal;
 
 #define CURRENT_MATRIX _nj_current_matrix_ptr_
+
+const int MilesjmpBallID = 230;
+const int MilesCurlMDL = 255;
+const int MilesFlightMDL = 269;
+
+
